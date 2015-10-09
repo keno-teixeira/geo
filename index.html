@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="geoApp">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>Georeferenciamento CODHAB</title>
+  <meta name="generator" content="Bootply" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <script src="src/lib/angular/angular.js"></script>
+  <script src="src/lib/leaflet/leaflet.js"></script>
+  <script src="src/lib/angular/directive.js"></script>
+  <script src="src/js/app.js"></script>
+  <script src="src/js/georef.js"></script>
+  <link rel="stylesheet" href="src/lib/leaflet/leaflet.css" />
+  <link href="src/css/bootstrap.min.css" rel="stylesheet">
+  <link href="src/css/styles.css" rel="stylesheet"> 
+</head>
+<body  ng-controller="georef">
+  <div class="page-container">  
+  <!-- top navbar -->
+    <div class="navbar navbar-inverse ">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Georeferenciamento CODHAB</a>
+      </div>
+    </div>
+    <!-- block-container -->
+    <div class="block-container">
+      <div class="row">        
+      <!-- sidebar -->
+        <div class="col-xs-4 col-sm-2 filtro" >
+          <div>
+            <h3>Filtros</h3>
+            <div class="container container-side">
+              <div class="row">
+                <div class="container container-side form-group col-sm-2">
+                  <label for="lista">Lista: </label><br>
+                  <select class="form-control" name="lista" id="lista" ng-model="data.lista" multiple>
+                    <option value="1">RII</option>
+                    <option value="2">RIE </option> 
+                    <option value="3">Vulneraveis</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="container container-side form-group col-sm-2">
+                  <label for="tipo">Tipo: </label><br>
+                  <select class="form-control" name="tipo" id="tipo" ng-model="data.tipo" multiple>
+                    <option value="1">Idoso</option>
+                    <option value="2">Deficiente</option>
+                    <option value="3">Sem Con. especial </option> 
+                  </select>
+                </div>
+              </div>
+              <div class="row">  
+                <div class="container container-side form-signin form-group col-sm-2">
+                  <label for="faixa">Faixa: </label><br>
+                  <select class="form-control" name="faixa" id="faixa" ng-model="data.faixa" multiple>
+                    <option value="1">Faixa 1</option>
+                    <option value="2">Faixa 2</option>
+                    <option value="3">Faixa 3</option>
+                    <option value="4">Faixa 4</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="container container-side form-signin form-group col-sm-2">
+                  <label for="sexo">Sexo: </label><br>
+                  <select class="form-control" name="sexo" id="sexo" ng-model="data.sexo" multiple>
+                    <option value="1">Homen</option> 
+                    <option value="2">Mulher</option>
+                  </select>
+                </div>
+              </div>    
+              <button class="btn btn-sm btn-success" ng-click="geojsonSelect(data)">Filtrar</button>
+            </div>
+          </div>
+        </div>
+        <!-- main area -->
+        <div class="col-xs-12 col-sm-10 map">
+          <leaflet center="brasilia" defaults="defaults" geojson="geojson" legend="legend" controls="controls" class="mapa"></leaflet>
+        </div><!-- /.col-xs-12 main -->
+      </div><!--/.row-->
+    </div><!--/.container-->
+  </div><!--/.page-container-->
+
+  <div id="footer"><!--footer-->
+    <div class="container">
+      <div class="row">
+        <ul class="list-unstyled">
+          <li class="col-sm-4 col-xs-6">
+            <a href="#">Sobre</a>
+          </li>
+          <li class="col-sm-4 col-xs-6">
+            <a href="#">Serviço</a>
+          </li>
+          <li class="col-sm-4 col-xs-6">
+            <a href="#">CODHAB</a>
+          </li>
+        </ul>
+      </div><!--/row-->
+    </div><!--/container-->
+  </div><!--/footer-->
+
+  <!-- script references -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+  <script src="src/js/bootstrap.min.js"></script>
+  <script src="src/js/scripts.js"></script>
+  <script src="src/lib/loading/bootstrap-waitingfor.js"></script>
+
+</body>
+</html>
